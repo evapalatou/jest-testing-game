@@ -7,7 +7,7 @@ const { game } = require("../game");
 
 beforeAll(() => {
     let fs = require("fs");
-    let fileContents = fs.readFileSync("01-testing-our-first-function-part-1/index.html", "utf-8");
+    let fileContents = fs.readFileSync("02-testing-our-first-function-part-2/index.html", "utf-8");
     document.open();
     document.write(fileContents);
     document.close();
@@ -19,5 +19,14 @@ describe("game object contains correct keys", () => {
     });
     test("currentGame key exists", () => {
         expect("currentGame" in game).toBe(true);
+    });
+    test("playerMoves key exists", () => {
+        expect("playerMoves" in game).toBe(true);
+    });
+    test("choices key exists", () => {
+        expect("choices" in game).toBe(true);
+    });
+    test("choices contain correct ids", () => {
+        expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
     });
 });
